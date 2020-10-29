@@ -1,0 +1,6 @@
+.gradle
+.idea
+build
+quickstarts/**/target
+
+*.iml
