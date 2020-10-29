@@ -2,50 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>quarkus-extensions-parent</artifactId>
-        <groupId>io.quarkus</groupId>
-        <version>1.9.0.Final</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.marcnuri.yakc</groupId>
-    <artifactId>quarkus-yakc-parent</artifactId>
-    <version>${version.quarkus}</version>
+    <artifactId>quarkues-yakc-extension-parent</artifactId>
+    <version>0.0.0</version>
     <name>Quarkus - YAKC</name>
     <packaging>pom</packaging>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.release>11</maven.compiler.release>
         <version.quarkus>1.9.0.Final</version.quarkus>
+        <version.graal>19.3.1</version.graal>
         <version.yakc>0.0.11</version.yakc>
     </properties>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkus-yakc-deployment</artifactId>
-                <version>${version.quarkus}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkus-yakc-deployment-internal</artifactId>
-                <version>${version.quarkus}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkus-yakc</artifactId>
-                <version>${version.quarkus}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkus-yakc-internal</artifactId>
-                <version>${version.quarkus}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkus-yakc-spi</artifactId>
-                <version>${version.quarkus}</version>
-            </dependency>
             <dependency>
                 <groupId>com.marcnuri.yakc</groupId>
                 <artifactId>kubernetes-client</artifactId>
@@ -56,8 +29,90 @@
                 <artifactId>kubernetes-api</artifactId>
                 <version>${version.yakc}</version>
             </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-core</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-core-deployment</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-arc</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-arc-deployment</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-kubernetes-spi</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-jackson</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-jackson-deployment</artifactId>
+                <version>${version.quarkus}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>svm</artifactId>
+                <version>${version.graal}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.marcnuri.yakc</groupId>
+                <artifactId>quarkues-yakc-extension-deployment</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.marcnuri.yakc</groupId>
+                <artifactId>quarkues-yakc-extension-deployment-internal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.marcnuri.yakc</groupId>
+                <artifactId>quarkues-yakc-extension</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.marcnuri.yakc</groupId>
+                <artifactId>quarkues-yakc-extension-internal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.marcnuri.yakc</groupId>
+                <artifactId>quarkues-yakc-extension-spi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-bootstrap-maven-plugin</artifactId>
+                    <version>${version.quarkus}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
     <modules>
         <module>deployment</module>
         <module>runtime</module>

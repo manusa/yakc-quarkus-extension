@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.marcnuri.yakc</groupId>
-        <artifactId>quarkus-yakc-parent</artifactId>
-        <version>1.9.0.Final</version>
+        <artifactId>quarkues-yakc-extension-parent</artifactId>
+        <version>0.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>quarkus-yakc-deployment</artifactId>
+    <artifactId>quarkues-yakc-extension-deployment</artifactId>
     <name>Quarkus - YAKC - Deployment</name>
 
     <dependencies>
         <dependency>
             <groupId>com.marcnuri.yakc</groupId>
-            <artifactId>quarkus-yakc-deployment-internal</artifactId>
+            <artifactId>quarkues-yakc-extension-deployment-internal</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -33,7 +33,7 @@
                         <path>
                             <groupId>io.quarkus</groupId>
                             <artifactId>quarkus-extension-processor</artifactId>
-                            <version>${project.version}</version>
+                            <version>${version.quarkus}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

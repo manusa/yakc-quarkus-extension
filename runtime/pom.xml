@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.marcnuri.yakc</groupId>
-        <artifactId>quarkus-yakc-parent</artifactId>
-        <version>1.9.0.Final</version>
+        <artifactId>quarkues-yakc-extension-parent</artifactId>
+        <version>0.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>quarkus-yakc</artifactId>
+    <artifactId>quarkues-yakc-extension</artifactId>
     <name>Quarkus - YAKC - Runtime</name>
     <description>Interact with Kubernetes and develop Kubernetes Operators</description>
     <dependencies>
@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>com.marcnuri.yakc</groupId>
-            <artifactId>quarkus-yakc-internal</artifactId>
+            <artifactId>quarkues-yakc-extension-internal</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -39,22 +39,6 @@
             <groupId>com.marcnuri.yakc</groupId>
             <artifactId>kubernetes-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-compress</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.xml.bind</groupId>
-            <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.smallrye.config</groupId>
-            <artifactId>smallrye-config-source-yaml</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -62,6 +46,16 @@
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-bootstrap-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>extension-descriptor</goal>
+                        </goals>
+                        <configuration>
+                            <deployment>${project.groupId}:${project.artifactId}-deployment:${project.version}</deployment>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -70,7 +64,7 @@
                         <path>
                             <groupId>io.quarkus</groupId>
                             <artifactId>quarkus-extension-processor</artifactId>
-                            <version>${project.version}</version>
+                            <version>${version.quarkus}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

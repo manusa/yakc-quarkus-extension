@@ -12,23 +12,23 @@ public class KubernetesClientProducer {
 
     private KubernetesClient client;
 
-    @Singleton
-    @Produces
-    public Configuration config(KubernetesClientBuildConfig buildConfig) {
-        return KubernetesClientUtils.createConfig(buildConfig);
-    }
-
-    @Singleton
-    @Produces
-    public KubernetesClient kubernetesClient(Configuration configuration) {
-        client = new KubernetesClient(configuration);
-        return client;
-    }
-
-    @PreDestroy
-    public void destroy() {
-        if (client != null) {
-            client.close();
-        }
-    }
+//    @Singleton
+//    @Produces
+//    public Configuration config(KubernetesClientBuildConfig buildConfig) {
+//        return KubernetesClientUtils.createConfig(buildConfig);
+//    }
+//
+//    @Singleton
+//    @Produces
+//    public KubernetesClient kubernetesClient(Configuration configuration) {
+//        client = new KubernetesClient(configuration);
+//        return client;
+//    }
+//
+//    @PreDestroy
+//    public void destroy() {
+//        if (client != null) {
+//            client.close();
+//        }
+//    }
 }
