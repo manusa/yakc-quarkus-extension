@@ -20,7 +20,7 @@ Add the extension dependency to your `pom.xml`:
     <dependency>
       <groupId>com.marcnuri.yakc</groupId>
       <artifactId>quarkus-yakc-extension</artifactId>
-      <version>0.0.0</version>
+      <version>0.0.1</version>
     </dependency>
   </dependencies>
 ```
