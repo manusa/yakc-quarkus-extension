@@ -17,9 +17,14 @@ jobs:
         with:
           java-version: '11'
           server-id: ossrh
-          server-username: ${{ secrets.OSSRHUSERNAME }}
-          server-password: ${{ secrets.OSSRHPASSWORD }}
+          server-username: OSSRHUSERNAME
+          server-password: OSSRHPASSWORD
           gpg-private-key: ${{ secrets.SIGNINGKEY }}
-          gpg-passphrase: ${{ secrets.SIGNINGPASSWORD }}
+          gpg-passphrase: SIGNINGPASSWORD
       - name: Maven Build
         run: mvn clean verify deploy -Prelease
+        env:
+          OSSRHUSERNAME: ${{ secrets.OSSRHUSERNAME }}
+          OSSRHPASSWORD: ${{ secrets.OSSRHPASSWORD }}
+          SIGNINGPASSWORD: ${{ secrets.SIGNINGPASSWORD }}
+
