@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.marcnuri.yakc</groupId>
-            <artifactId>quarkues-yakc-extension-deployment-internal</artifactId>
+            <artifactId>quarkues-yakc-extension</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

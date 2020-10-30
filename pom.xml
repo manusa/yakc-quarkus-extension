@@ -13,6 +13,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.release>11</maven.compiler.release>
+        <version.maven-compiler>3.8.1</version.maven-compiler>
         <version.quarkus>1.9.0.Final</version.quarkus>
         <version.graal>19.3.1</version.graal>
         <version.yakc>0.0.11</version.yakc>
@@ -77,22 +78,7 @@
             </dependency>
             <dependency>
                 <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkues-yakc-extension-deployment-internal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
                 <artifactId>quarkues-yakc-extension</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkues-yakc-extension-internal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkues-yakc-extension-spi</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -108,7 +94,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>${version.maven-compiler}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -116,8 +102,5 @@
     <modules>
         <module>deployment</module>
         <module>runtime</module>
-        <module>deployment-internal</module>
-        <module>runtime-internal</module>
-        <module>spi</module>
     </modules>
 </project>

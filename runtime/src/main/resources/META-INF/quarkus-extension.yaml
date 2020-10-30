@@ -3,6 +3,7 @@ name: "YAKC"
 metadata:
   keywords:
   - "yakc"
+  - "kubernetes"
   categories:
   - "cloud"
-  status: "stable"
+  status: "preview"

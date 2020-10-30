@@ -12,15 +12,12 @@
 
     <artifactId>quarkues-yakc-extension</artifactId>
     <name>Quarkus - YAKC - Runtime</name>
-    <description>Interact with Kubernetes and develop Kubernetes Operators</description>
+    <description>Interact with Kubernetes and develop Kubernetes Operators using YAKC (Yet Another Kubernetes Client)</description>
+
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.marcnuri.yakc</groupId>
-            <artifactId>quarkues-yakc-extension-internal</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

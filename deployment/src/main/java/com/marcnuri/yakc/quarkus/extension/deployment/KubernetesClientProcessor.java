@@ -1,17 +1,5 @@
 package com.marcnuri.yakc.quarkus.extension.deployment;
 
-import java.lang.reflect.Modifier;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-import javax.inject.Inject;
-
-import org.jboss.jandex.ClassInfo;
-import org.jboss.jandex.DotName;
-import org.jboss.logging.Logger;
-
-import com.marcnuri.yakc.quarkus.extension.runtime.KubernetesClientProducer;
-
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.Feature;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -23,7 +11,14 @@ import io.quarkus.deployment.builditem.IndexDependencyBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageProxyDefinitionBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.pkg.steps.NativeBuild;
-import io.quarkus.kubernetes.spi.KubernetesRoleBindingBuildItem;
+import org.jboss.jandex.ClassInfo;
+import org.jboss.jandex.DotName;
+import org.jboss.logging.Logger;
+
+import javax.inject.Inject;
+import java.lang.reflect.Modifier;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class KubernetesClientProcessor {
 
@@ -37,9 +32,6 @@ public class KubernetesClientProcessor {
 
   @Inject
   BuildProducer<ReflectiveClassBuildItem> reflectiveClasses;
-
-  @Inject
-  BuildProducer<KubernetesRoleBindingBuildItem> roleBindingProducer;
 
   @BuildStep(onlyIf = NativeBuild.class)
   void addDependencies(BuildProducer<IndexDependencyBuildItem> indexDependency) {
@@ -87,7 +79,6 @@ public class KubernetesClientProcessor {
     BuildProducer<AdditionalBeanBuildItem> additionalBeanBuildItemBuildItem) {
 
     featureProducer.produce(new FeatureBuildItem("YAKC"));
-    roleBindingProducer.produce(new KubernetesRoleBindingBuildItem("view", true));
 
     // Reflection
     final String[] modelClasses = getAllKnownImplementorsAndSubclasses(combinedIndexBuildItem, KUBERNETES_MODEL);
@@ -123,9 +114,6 @@ public class KubernetesClientProcessor {
       .filter(s -> s.startsWith(YACK_GROUP_ID))
       .toArray(String[]::new);
     reflectiveClasses.produce(new ReflectiveClassBuildItem(true, false, serializerClasses));
-
-    // wire up the KubernetesClient bean support
-    additionalBeanBuildItemBuildItem.produce(AdditionalBeanBuildItem.unremovableOf(KubernetesClientProducer.class));
   }
 
   private static String[] getAllKnownImplementorsAndSubclasses(
