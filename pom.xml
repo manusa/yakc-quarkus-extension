@@ -8,6 +8,7 @@
     <artifactId>quarkues-yakc-extension-parent</artifactId>
     <version>0.0.0</version>
     <name>Quarkus - YAKC</name>
+    <description>Parent module for Quarkus YACK Extension: Interact with Kubernetes and develop Kubernetes Operators using YAKC (Yet Another Kubernetes Client)</description>
     <packaging>pom</packaging>
 
     <properties>
@@ -193,6 +194,13 @@
         </profile>
     </profiles>
 
+    <url>https://github.com/manusa/yakc-quarkus-extension</url>
+    <developers>
+        <developer>
+            <name>Marc Nuri</name>
+            <email>marc@marcnuri.com</email>
+        </developer>
+    </developers>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
