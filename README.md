@@ -1,4 +1,8 @@
 # YAKC - Yet Another Kubernetes Client - Quarkus Extension
+[![Maven Central](https://img.shields.io/maven-central/v/com.marcnuri.yakc/quarkus-yakc-extension)
+](https://search.maven.org/search?q=g:com.marcnuri.yakc%20a:quarkus-yakc-extension)
+[![javadoc](https://javadoc.io/badge2/com.marcnuri.yakc/quarkus-yakc-extension/javadoc.svg)
+](https://javadoc.io/doc/com.marcnuri.yakc/quarkus-yakc-extension)
 
 Use this [Quarkus](https://www.quarkus.io) extension to integrate
 [YAKC](https://github.com/manusa/yakc) in your Quarkus application.
@@ -15,15 +19,15 @@ Add the extension dependency to your `pom.xml`:
     <!-- ... -->
     <dependency>
       <groupId>com.marcnuri.yakc</groupId>
-      <artifactId>quarkues-yakc-extension</artifactId>
+      <artifactId>quarkus-yakc-extension</artifactId>
       <version>0.0.0</version>
     </dependency>
   </dependencies>
 ```
 
 ## Release process
-- Tag release with the current `pom.xml` version e.g. 'v0.0.0'
+- Tag release with the current `pom.xml` version e.g. `v0.0.0`
 - Wait for action to complete and artifacts to be published in Maven Central
 - Increment version:
-  `mvn versions:set -DnewVersion=4.11-SNAPSHOT -DgenerateBackupPoms=false`
+  `mvn versions:set -DnewVersion=0.0.1 -DgenerateBackupPoms=false`
 - Commit `[RELEASE] v0.0.0 released, prepare for next development iteration`

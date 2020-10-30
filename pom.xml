@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.marcnuri.yakc</groupId>
-    <artifactId>quarkues-yakc-extension-parent</artifactId>
+    <artifactId>quarkus-yakc-extension-parent</artifactId>
     <version>0.0.1</version>
     <name>Quarkus - YAKC</name>
     <description>Parent module for Quarkus YACK Extension: Interact with Kubernetes and develop Kubernetes Operators using YAKC (Yet Another Kubernetes Client)</description>
@@ -95,12 +95,12 @@
             </dependency>
             <dependency>
                 <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkues-yakc-extension-deployment</artifactId>
+                <artifactId>quarkus-yakc-extension-deployment</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.marcnuri.yakc</groupId>
-                <artifactId>quarkues-yakc-extension</artifactId>
+                <artifactId>quarkus-yakc-extension</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.marcnuri.yakc</groupId>
-        <artifactId>quarkues-yakc-extension-parent</artifactId>
+        <artifactId>quarkus-yakc-extension-parent</artifactId>
         <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>quarkues-yakc-extension</artifactId>
+    <artifactId>quarkus-yakc-extension</artifactId>
     <name>Quarkus - YAKC - Runtime</name>
     <description>Interact with Kubernetes and develop Kubernetes Operators using YAKC (Yet Another Kubernetes Client)</description>
 
