@@ -35,11 +35,8 @@ public class KubernetesClientProcessor {
 
   @BuildStep(onlyIf = NativeBuild.class)
   void addDependencies(BuildProducer<IndexDependencyBuildItem> indexDependency) {
-    indexDependency.produce(new IndexDependencyBuildItem(YACK_GROUP_ID, "kubernetes-client"));
-    indexDependency.produce(new IndexDependencyBuildItem(YACK_GROUP_ID, "kubernetes-client-api"));
-    indexDependency.produce(new IndexDependencyBuildItem(YACK_GROUP_ID, "kubernetes-api"));
-    indexDependency.produce(new IndexDependencyBuildItem(YACK_GROUP_ID, "kubernetes-model"));
     indexDependency.produce(new IndexDependencyBuildItem("org.bouncycastle", "bcprov-jdk15on"));
+    indexDependency.produce(new IndexDependencyBuildItem("org.bouncycastle", "bcpkix-jdk15on"));
   }
 
   @BuildStep(onlyIf = NativeBuild.class)

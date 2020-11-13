@@ -21,7 +21,7 @@
         <version.sonatype-staging>1.6.7</version.sonatype-staging>
         <version.quarkus>1.9.0.Final</version.quarkus>
         <version.graal>19.3.1</version.graal>
-        <version.yakc>0.0.12</version.yakc>
+        <version.yakc>0.0.13</version.yakc>
     </properties>
 
     <modules>
