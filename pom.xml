@@ -6,7 +6,7 @@
 
     <groupId>com.marcnuri.yakc</groupId>
     <artifactId>quarkus-yakc-extension-parent</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>Quarkus - YAKC</name>
     <description>Parent module for Quarkus YACK Extension: Interact with Kubernetes and develop Kubernetes Operators using YAKC (Yet Another Kubernetes Client)</description>
     <packaging>pom</packaging>
