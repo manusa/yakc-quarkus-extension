@@ -20,7 +20,7 @@ Add the extension dependency to your `pom.xml`:
     <dependency>
       <groupId>com.marcnuri.yakc</groupId>
       <artifactId>quarkus-yakc-extension</artifactId>
-      <version>0.0.3</version>
+      <version>0.0.4</version>
     </dependency>
   </dependencies>
 ```
@@ -29,5 +29,5 @@ Add the extension dependency to your `pom.xml`:
 - Tag release with the current `pom.xml` version e.g. `v0.0.0`
 - Wait for action to complete and artifacts to be published in Maven Central
 - Increment version:
-  `mvn versions:set -DnewVersion=0.0.4 -DgenerateBackupPoms=false`
-- Commit `[RELEASE] v0.0.3 released, prepare for next development iteration`
+  `mvn versions:set -DnewVersion=0.0.5 -DgenerateBackupPoms=false`
+- Commit `[RELEASE] v0.0.4 released, prepare for next development iteration`
