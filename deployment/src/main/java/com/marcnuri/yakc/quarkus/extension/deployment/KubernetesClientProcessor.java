@@ -17,12 +17,17 @@ import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class KubernetesClientProcessor {
 
   private static final String YACK_GROUP_ID = "com.marcnuri.yakc";
+  private static final String KUBERNETES_EXCEPTION = "com.marcnuri.yakc.api.KubernetesException";
   private static final String KUBERNETES_MODEL = "com.marcnuri.yakc.model.Model";
 
   private static final Logger log = Logger.getLogger(KubernetesClientProcessor.class.getName());
@@ -64,7 +69,7 @@ public class KubernetesClientProcessor {
       "java.security.cert.CertStoreSpi",
       "java.security.Key",
       "java.security.KeyFactory",
-      "java.security.KeyStoreSpi");
+      "java.security.KeyStoreSpi").toArray(String[]::new);
     reflectiveClasses.produce(ReflectiveClassBuildItem
       .builder(sslClasses).weak(false).constructors(true).methods(true).fields(true).build());
     sslNativeSupport.produce(new ExtensionSslNativeSupportBuildItem(Feature.KUBERNETES_CLIENT));
@@ -78,11 +83,13 @@ public class KubernetesClientProcessor {
     featureProducer.produce(new FeatureBuildItem("YAKC"));
 
     // Reflection
-    final String[] modelClasses = getAllKnownImplementorsAndSubclasses(combinedIndexBuildItem, KUBERNETES_MODEL);
+    final String[] modelClasses = getAllKnownImplementorsAndSubclasses(combinedIndexBuildItem, KUBERNETES_MODEL)
+      .toArray(String[]::new);
     reflectiveClasses.produce(ReflectiveClassBuildItem
       .builder(modelClasses).weak(true).constructors(true).methods(true).fields(false).build());
 
-    final String[] additionalClasses = new String[]{
+    final List<String> additionalClasses = new ArrayList<>();
+    additionalClasses.addAll(Arrays.asList(
       "com.marcnuri.yakc.config.KubeConfig",
       "com.marcnuri.yakc.config.KubeConfig$NamedCluster",
       "com.marcnuri.yakc.config.KubeConfig$Cluster",
@@ -92,9 +99,11 @@ public class KubernetesClientProcessor {
       "com.marcnuri.yakc.config.KubeConfig$AuthInfo",
       "com.marcnuri.yakc.config.KubeConfig$NamedAuthInfo",
       "com.marcnuri.yakc.api.WatchEvent"
-    };
+    ));
+    additionalClasses.addAll(
+      getAllKnownImplementorsAndSubclasses(combinedIndexBuildItem, KUBERNETES_EXCEPTION).collect(Collectors.toList()));
     reflectiveClasses.produce(ReflectiveClassBuildItem
-      .builder(additionalClasses).weak(true).constructors(true).methods(true).fields(false).build());
+      .builder(additionalClasses.toArray(String[]::new)).weak(true).constructors(true).methods(true).fields(false).build());
 
     final String[] deserializerClasses = combinedIndexBuildItem.getIndex()
       .getAllKnownSubclasses(DotName.createSimple("com.fasterxml.jackson.databind.JsonDeserializer"))
@@ -113,7 +122,7 @@ public class KubernetesClientProcessor {
     reflectiveClasses.produce(new ReflectiveClassBuildItem(true, false, serializerClasses));
   }
 
-  private static String[] getAllKnownImplementorsAndSubclasses(
+  private static Stream<String> getAllKnownImplementorsAndSubclasses(
     CombinedIndexBuildItem combinedIndexBuildItem, String... baseClasses) {
     Stream<ClassInfo> ret = Stream.empty();
     for (String baseClass : baseClasses) {
@@ -124,6 +133,7 @@ public class KubernetesClientProcessor {
         combinedIndexBuildItem.getIndex().getAllKnownSubclasses(DotName.createSimple(baseClass))
           .stream());
     }
-    return ret.map(ClassInfo::name).map(Object::toString).toArray(String[]::new);
+    return ret.map(ClassInfo::name).map(Object::toString);
   }
+
 }
