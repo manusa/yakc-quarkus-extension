@@ -18,9 +18,9 @@
         <version.maven-source>2.2.1</version.maven-source>
         <version.maven-javadoc>2.9.1</version.maven-javadoc>
         <version.maven-gpg>1.6</version.maven-gpg>
-        <version.sonatype-staging>1.6.7</version.sonatype-staging>
-        <version.quarkus>1.13.2.Final</version.quarkus>
-        <version.graal>19.3.1</version.graal>
+        <version.sonatype-staging>1.6.8</version.sonatype-staging>
+        <version.quarkus>2.5.2.Final</version.quarkus>
+        <version.graal>21.3.0</version.graal>
         <version.yakc>0.0.25</version.yakc>
     </properties>
 
